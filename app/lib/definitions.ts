@@ -1,3 +1,4 @@
+import { z } from 'zod';
 // This file contains type definitions for your data.
 // It describes the shape of the data, and what data type each property should accept.
 // For simplicity of teaching, we're manually defining these types.
@@ -25,6 +26,14 @@ export type Invoice = {
   // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
   status: 'pending' | 'paid';
 };
+
+export const InvoiceSchema = z.object({
+  id: z.string(),
+  customerId: z.string(),
+  amount: z.number(),
+  date: z.string(),
+  status: z.enum(['pending', 'paid']),
+});
 
 export type Revenue = {
   month: string;
